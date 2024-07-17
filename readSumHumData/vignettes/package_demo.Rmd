@@ -1,0 +1,45 @@
+---
+title: "Demonstration of Main Function and Methods"
+author: "Shikan Chen & 23202508"
+date: "`r Sys.Date()`"
+output: 
+  rmarkdown::html_vignette
+  
+vignette: >
+  %\VignetteIndexEntry{package_demo}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  fig.width = 7,
+  fig.height = 5,
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+
+```{r setup}
+# Load the library
+library(readSumHumData)
+
+# Read data for Ireland and Japan using the read_hdi function
+data_irl <- read_hdi("irl")  # Reads HDI data for Ireland
+data_jpn <- read_hdi("jpn")  # Reads HDI data for Japan
+
+# Print the datasets to view their structure and a snapshot of their contents
+print_hdiData(data_irl)
+print_hdiData(data_jpn)
+
+# Generate summaries of the datasets
+summary_hdiData(data_irl)  # Print the data object for Ireland to inspect its contents
+summary_hdiData(data_jpn)  # Print the data object for Japan to inspect its contents
+
+# Setting larger margins: bottom, left, top, right
+par(mar=c(5.1, 4.1, 4.1, 2.1))
+
+plot_hdiData(data_irl)  # Summarizes the Ireland data showing key statistical measures
+plot_hdiData(data_jpn)  # Summarizes the Japan data showing key statistical measures
+```
